@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827"><meta name="description" content="AlbumXIIPPLG2 - galeri foto kelas">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="logo.jpg" type="image/jpeg">
+<title>albumXIIPPLG2 — Galeri Kelas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><img class="brand-logo" src="logo.jpg" alt="Logo XII PPLG 2"><span>albumXIIPPLG2</span></div>
+  <div class="actions">
+    <button id="loginBtn" class="ghost">Admin</button>
+    <button id="logoutBtn" class="ghost hidden">Keluar</button>
+    <button id="addAlbumBtn" class="primary admin-only hidden">+ Album</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <p class="eyebrow">GALERI ONLINE • XII PPLG 2</p>
+    <h1>Simpan momen,<br><span>ceritakan kenangan.</span></h1>
+    <p class="sub">Galeri kelas yang tersimpan online. Foto yang diunggah dapat dilihat dari perangkat lain.</p>
+  </div>
+  <label id="uploadCard" class="upload-card admin-only hidden" for="photoInput">
+    <span class="upload-icon">↑</span><strong>Tambah foto</strong><small>JPG, PNG, WEBP • bisa banyak</small>
+  </label>
+  <input id="photoInput" type="file" accept="image/*" multiple hidden>
+  <div id="visitorCard" class="upload-card">
+    <span class="upload-icon">◉</span><strong>Album publik</strong><small>Foto dapat dilihat siapa saja</small>
+  </div>
+</section>
+
+<section class="toolbar">
+  <div id="albumTabs" class="tabs"></div>
+  <div class="search"><span>⌕</span><input id="search" placeholder="Cari foto..."></div>
+</section>
+
+<section id="empty" class="empty hidden"><div class="empty-icon">▧</div><h2>Belum ada foto</h2><p>Album ini belum memiliki foto.</p></section>
+<section id="gallery" class="gallery"></section>
+</main>
+
+<div id="modal" class="modal hidden" aria-hidden="true">
+<button id="closeModal" class="close">×</button><button id="prevPhoto" class="nav left">‹</button>
+<div class="viewer"><img id="viewerImg" alt=""><div class="caption"><strong id="viewerName"></strong><button id="deletePhoto" class="danger admin-only hidden">Hapus</button></div></div>
+<button id="nextPhoto" class="nav right">›</button>
+</div>
+
+<div id="loginDialog" class="dialog hidden"><div class="dialog-card">
+<h2>Login Admin</h2><p class="muted">Masuk untuk mengelola album dan mengunggah foto.</p>
+<input id="email" type="email" placeholder="Email admin"><input id="password" type="password" placeholder="Password">
+<div class="dialog-actions"><button id="cancelLogin" class="ghost">Batal</button><button id="loginSubmit" class="primary">Masuk</button></div>
+<p id="loginMessage" class="message"></p></div></div>
+
+<div id="albumDialog" class="dialog hidden"><div class="dialog-card">
+<h2>Album baru</h2><input id="albumName" maxlength="40" placeholder="Contoh: Kegiatan Sekolah">
+<div class="dialog-actions"><button id="cancelAlbum" class="ghost">Batal</button><button id="saveAlbum" class="primary">Simpan</button></div>
+</div></div>
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body></html>
